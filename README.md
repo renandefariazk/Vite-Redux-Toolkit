@@ -18,7 +18,7 @@ npm i @unform/core
 
 npm i react-toastify
 
-
+npm i styled-icons
 
 Teste:
 - import tsconfigPaths from 'vite-tsconfig-paths';

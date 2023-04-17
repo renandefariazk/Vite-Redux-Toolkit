@@ -60,6 +60,16 @@ export const FormContainer = styled.div`
   width: 100%;
 `
 
+export const FormContainerModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 15px;
+`
+
 export const InputText = styled(Input)`
   display: flex;
   justify-content: center;
@@ -89,3 +99,41 @@ export const LogoContainer = styled.div`
     width: 100%;
   }
 `
+
+export const ButtonModal = styled.p`
+  cursor: pointer;
+  color: #00ff;
+  transition: transform 300ms linear;
+  &:hover {
+    transform: scale(0.9);
+  }
+  &:active {
+    transform: scale(0.8);
+  }
+`
+
+export const ModalContainer = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  flex-direction: column;
+  background-color: #ffff;
+  border-radius: 4px;
+  padding: 40px;
+  margin: 32px 0;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #fff9;
+    border-radius: 3px;
+  }
+`;
