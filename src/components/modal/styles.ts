@@ -41,13 +41,14 @@ export const ContentWrapper = styled.div.attrs({
 
 interface IButtonFechar {
   backgroundColor: string;
-  boderRadius?: string;
+  borderRadius?: string;
 }
 
 export const CloseButton = styled.button<IButtonFechar>`
   /* background-color: transparent; */
   background-color: ${(props) => props.backgroundColor ? props.backgroundColor : "transparent"};
-  border-radius: ${(props) => props.boderRadius ? props.boderRadius : "0px"};
+  border-radius: ${(props) => props.borderRadius ? props.borderRadius : "0px"};
+  cursor: pointer;
   padding: 4px 0;
   margin-left: auto;
   transition: transform 300ms linear;

@@ -16,10 +16,10 @@ interface ModalProps extends PropsWithChildren<any> {
 
 type Props = ModalProps;
 
-export const ModalCloseButton = ({ backgroundColor, boderRadius, onClick }: any) => {
+export const ModalCloseButton = ({ backgroundColor, borderRadius, onClick }: any) => {
   return (
     // <S.CloseButton onClick={onClick}>
-    <S.CloseButton onClick={onClick} backgroundColor={backgroundColor} boderRadius={boderRadius}>
+    <S.CloseButton onClick={onClick} backgroundColor={backgroundColor} borderRadius={borderRadius}>
       <S.CloseIcon />
     </S.CloseButton>
   );

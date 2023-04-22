@@ -18,7 +18,16 @@ npm i @unform/core
 
 npm i react-toastify
 
+https://styled-icons.dev/
 npm i styled-icons
+
+npm i yup
+
+npm i react-select   // muiltSelect
+
 
 Teste:
 - import tsconfigPaths from 'vite-tsconfig-paths';
+
+https://react-hook-form.com/
+npm install react-hook-form

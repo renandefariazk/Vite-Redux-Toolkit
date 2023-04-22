@@ -1,15 +1,17 @@
 import styled, { css } from "styled-components";
 
-export const Input = styled.input<{ isLoading?: boolean }>`
+export const TextArea = styled.textarea<{ isLoading?: boolean }>`
+  font-family: 'Open Sans';
   font-size: 14px;
+  color: white;
   background-color: #fff;
   padding: 16px;
   border: 1px solid #c9c9c9;
   border-radius: 4px;
-  max-height: 50px;
+  height: 12rem;
+  max-height: 15rem;
+  resize: none;
   width: 100%;
-  /* width: 100%;
-  height: 100%; */
 
   &:disabled {
     background-color: #f1f1f1;
@@ -30,33 +32,29 @@ export const Input = styled.input<{ isLoading?: boolean }>`
 `;
 
 export const FieldLabel = styled.label`
-  /* display: block;
+  display: block;
+  font-family: 'Gilroy-SemiBold';
   font-size: 14px;
-  margin-bottom: 8px; */
-  & {
-    @media (max-width: 950px) {
-      font-size: 0.74rem;
-    }
-  }
+  color: white;
+  margin-bottom: 8px;
 `;
 
 export const FieldError = styled.span`
   display: block;
+  font-family: 'Gilroy-SemiBold';
   font-size: 14px;
+  color: red;
   margin-top: 8px;
   margin-bottom: 12px;
-  color: red;
 `;
 export const FieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* display: flex;
-  flex-direction: column;
   width: 100%;
   margin-bottom: 16px;
-  position: relative; */
+  position: relative;
 
-  /* &:not(:last-child) {
+  &:not(:last-child) {
     margin-right: 16px;
-  } */
+  }
 `;

@@ -13,6 +13,9 @@ import { logout } from "../../redux/auth/slices";
 import { Modal, ModalCloseButton } from "../../components/modal";
 import IsLoading from "../../components/loadingA";
 
+import * as Yup from "yup";
+import { useValidation } from "../../utils/hook";
+
 
 export default function Login(){
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,6 +23,7 @@ export default function Login(){
   const navigate = useNavigate();
   const formRef = useRef<FormHandles>(null);
   const formCreateRef = useRef<FormHandles>(null);
+  const { handleFormErrors } = useValidation();
 
   const userData = useSelector((state: any) => state.user);
   // const {loading: loadingUserData} = useSelector((state: any) => state.user);
@@ -30,12 +34,52 @@ export default function Login(){
   console.log("userData", userData);
   // console.log("createLoginDataData", createLoginData);
 
-  const handleSubmit = useCallback( async(data: any): Promise<void> => {
-    // console.log("submit Data", data);
-    await dispatch<any>(getAuth(data));
-    // navigate("Home");
+  // const handleSubmit = useCallback( async(data: any): Promise<void> => {
+  //   // console.log("submit Data", data);
+  //   await dispatch<any>(getAuth(data));
+  //   // navigate("Home");
 
-  }, [dispatch]);
+  // }, [dispatch]);
+
+  const handleSubmit = useCallback(
+    async (data: any): Promise<void> => {
+      try {
+
+        console.log("data", data);
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          username: Yup.string().required("Campo Necessario"),
+          password: Yup.string().required("Campo Necessario"),
+
+          // roles: Yup.array().of(
+          //   Yup.object().shape({
+          //     role_id: Yup.string(),
+          //   })
+          // ),
+        });
+
+        const validData = await schema.validate(
+          data,
+          // {
+          //   username,
+          //   password,
+          //   roles: roles.map((id: string) => ({ role_id: id })),
+          // },
+          {
+            abortEarly: false,
+          }
+        );
+
+        await dispatch<any>(getAuth(data));
+      } catch (error) {
+        handleFormErrors(error, formRef);
+      }
+    },
+    [dispatch, handleFormErrors]
+  );
+
+
   
   const handleCreateSubmit = useCallback( async(data: any): Promise<void> => {
     console.log("Create Data", data);
@@ -99,7 +143,7 @@ export default function Login(){
 
             <Modal isOpen={modalOpen} onClickOutside={ () => { setModalOpen(false) }}>
               <S.ModalContainer>
-                <ModalCloseButton onClick={ () => { setModalOpen(false) }} backgroundColor={"red"} boderRadius={"15px"}/>
+                <ModalCloseButton onClick={ () => { setModalOpen(false) }} backgroundColor={"red"} borderRadius={"15px"}/>
                 <Form ref={formCreateRef} onSubmit={handleCreateSubmit}>
                 <S.FormContainerModal>
                   <S.InputText name="username" type="text" placeholder="Email" />
