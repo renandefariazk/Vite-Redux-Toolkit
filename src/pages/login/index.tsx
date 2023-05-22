@@ -15,6 +15,7 @@ import IsLoading from "../../components/loadingA";
 
 import * as Yup from "yup";
 import { useValidation } from "../../utils/hook";
+import { RootState } from "../../redux/store";
 
 
 export default function Login(){
@@ -29,7 +30,7 @@ export default function Login(){
   // const {loading: loadingUserData} = useSelector((state: any) => state.user);
 
   // const createLoginData = useSelector((state: any) => state.createLogin);
-  const {loading: loadingCreateLogin} = useSelector((state: any) => state.createLogin);
+  const {loading: loadingCreateLogin} = useSelector((state: RootState) => state.createLogin);
 
   console.log("userData", userData);
   // console.log("createLoginDataData", createLoginData);
