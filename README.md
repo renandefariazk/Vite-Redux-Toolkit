@@ -31,3 +31,13 @@ Teste:
 
 https://react-hook-form.com/
 npm install react-hook-form
+
+
+react-select components = select e multiSelect 
+"react-select": "^4.3.0",
+"@types/react-select": "4.0.3",
+
+
+react-select components = selectNewVersion multiSelectNewVersion, e o novo input = asyncSelect
+"react-select": "^5.7.3",
+"@types/react-select": "^5.0.1",
