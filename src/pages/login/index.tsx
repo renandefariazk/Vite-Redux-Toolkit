@@ -15,12 +15,12 @@ import IsLoading from "../../components/loadingA";
 
 import * as Yup from "yup";
 import { useValidation } from "../../utils/hook";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 
 
 export default function Login(){
   const [modalOpen, setModalOpen] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const formRef = useRef<FormHandles>(null);
   const formCreateRef = useRef<FormHandles>(null);
@@ -84,7 +84,8 @@ export default function Login(){
   
   const handleCreateSubmit = useCallback( async(data: any): Promise<void> => {
     console.log("Create Data", data);
-    // await dispatch<any>(getAuth(data));
+    // await dispatch<any>(getAuth(data));  // sem o AppDispatch como interface do dispatch pode coloca <any> que resolve o erro de type
+    // await dispatch(getAuth(data));
     // navigate("Home");
     setModalOpen(false);
   }, [dispatch]);
